@@ -1,19 +1,23 @@
 {
 	"name": "Save your eyes: 202020",
+	"action":{
+		"default_popup": "index.html"
+	},
 	"version": "0.2",
 	"manifest_version": 3,
 	"permissions": [
-		"tabs",
 		"notifications",
 		"storage",
-		"alarms",
-		"webNavigation"
+		"scripting"
 	],
+	"background": {
+		"service_worker": "background.js"
+	},
 	"content_scripts":[
 		{
-			"js": [
-				"timer.js"
-			]
+			"matches": ["<all_urls>"],
+			"js": ["timer.js"],
+			"runs_at": "document_end"
 		}
 	]
 }
