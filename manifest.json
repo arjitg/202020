@@ -1,0 +1,19 @@
+{
+	"name": "Save your eyes: 202020",
+	"version": "0.2",
+	"manifest_version": 3,
+	"permissions": [
+		"tabs",
+		"notifications",
+		"storage",
+		"alarms",
+		"webNavigation"
+	],
+	"content_scripts":[
+		{
+			"js": [
+				"timer.js"
+			]
+		}
+	]
+}
