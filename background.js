@@ -20,3 +20,39 @@ showAlert();
 // chrome.scripting.executeScript({
 //   function: showAlert
 // });
+
+chrome.alarms.onAlarm.addListener(
+  () => {
+      chrome.notifications.create(
+          {
+              type: "basic",
+              iconUrl: "alarm.jpg",
+              title: "Stretch time!",
+              message: "You've worked hard. Time to relax!",
+              silent: false
+          },
+          () => { }
+      )
+  },
+)
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+      // console.log(request);
+      if (request.time)
+          createAlarm(request.time);
+
+      sendResponse(() => {
+          return false
+      });
+  }
+);
+
+function createAlarm(time) {
+  chrome.alarms.create(
+      "break_time",
+      {
+          delayInMinutes: 0.5,
+          periodInMinutes: time
+      }
+  );
+}
