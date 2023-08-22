@@ -2,17 +2,62 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <script src="timer.js"></script>
 </head>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: white;
+    }
+    #app{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 200px;
+        padding: 1rem;
+        color: black;
+    }
+    section.header{
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    section.buttons{
+        width: 100%;
+    }
+    button{
+        margin: 0.2rem 0;
+        padding: 1rem 2rem;
+        width: 100%;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        background-color: gray;
+        color: white;
+    }
+    button.hover{
+        box-shadow: 0 0 0.5rem gray;
+
+    }
+
+</style>
 <body>
-    <h2>
-        Time until a break
-    </h2>
-    <button id="btnStart">Start</button>
-    <button id="btnStop">Stop</button>
+    <div id="app">
+        <section class="header">
+            <h2>Eye stress reliever</h2>
+        </section>
+        <section class="buttons">
+            <button id="btnStart">Start</button>
+            <button id="btnStop">Stop</button>
+        </section>
+    </div>
 
 </body>
-<script src="timer.js">
+<script defer src="timer.js">
 
 </script>
 </html>

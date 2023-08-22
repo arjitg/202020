@@ -1,32 +1,9 @@
-let timerID;
-let timerTime;
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.cmd === 'START_TIMER') {
-    timerTime = new Date(request.when);
-    timerID = setTimeout(() => {
-       console.log('Time up...');
-    }, timerTime.getTime() - Date.now());
-  } else if (request.cmd === 'GET_TIME') {
-    sendResponse({ time: timerTime });
-  }
-});
-
-function showAlert() {
-  console.log("test!");
-}
-
-showAlert();
-// chrome.scripting.executeScript({
-//   function: showAlert
-// });
-
 chrome.alarms.onAlarm.addListener(
   () => {
       chrome.notifications.create(
           {
               type: "basic",
-              iconUrl: "alarm.jpg",
+              iconUrl: "stretch.png",
               title: "Stretch time!",
               message: "You've worked hard. Time to relax!",
               silent: false
@@ -37,12 +14,12 @@ chrome.alarms.onAlarm.addListener(
 )
 chrome.runtime.onMessage.addListener(
   function (request, sender, sendResponse) {
-      // console.log(request);
-      if (request.time)
-          createAlarm(request.time);
+      if (request.time){
+        createAlarm(request.time);
+      }
 
       sendResponse(() => {
-          return false
+        console.log('Reached...')
       });
   }
 );
@@ -56,3 +33,11 @@ function createAlarm(time) {
       }
   );
 }
+
+chrome.runtime.onMessage.addListener(
+  function (req, sender, sendRes){
+    if (req.stop){
+      chrome.alarms.clear("break_time");
+    }
+  }
+)

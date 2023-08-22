@@ -1,7 +1,8 @@
 {
 	"name": "Save your eyes: 202020",
 	"action":{
-		"default_popup": "index.html"
+		"default_popup": "index.html",
+		"default_icon": "stretch.png"
 	},
 	"version": "0.2",
 	"manifest_version": 3,
